@@ -5,6 +5,13 @@
  */
 package dl4jdream;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author psyriccio
@@ -16,6 +23,11 @@ public class MainFrame extends javax.swing.JFrame {
    */
   public MainFrame() {
     initComponents();
+    try {
+      jImagePanel.setImage(ImageIO.read(new File("./img/sample.jpg")));
+    } catch (IOException ex) {
+      Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
   }
 
   /**
@@ -77,7 +89,7 @@ public class MainFrame extends javax.swing.JFrame {
   }//GEN-LAST:event_jTestButtonActionPerformed
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JPanel jImagePanel;
+  private ImagePanel jImagePanel;
   private javax.swing.JButton jTestButton;
   // End of variables declaration//GEN-END:variables
 }
