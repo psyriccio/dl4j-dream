@@ -5,6 +5,7 @@
  */
 package dl4jdream;
 
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,18 +19,32 @@ import javax.imageio.ImageIO;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+  private final int panWidth = 800;
+  private final int panHeight = 600;
+  private final int bottomPadHeight = 30;
+  
   /**
    * Creates new form MainFrame
    */
   public MainFrame() {
     initComponents();
+    uiSetup();
     try {
-      jImagePanel.setImage(ImageIO.read(new File("./img/sample.jpg")));
+      ((ImagePanel) jImagePanel).setImage(ImageIO.read(new File("./img/sample.jpg")));
     } catch (IOException ex) {
       Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
 
+  private void uiSetup() {
+    setSize(panHeight, panHeight + bottomPadHeight);
+    setPreferredSize(new Dimension(panWidth, panHeight + bottomPadHeight));
+    setMaximumSize(new Dimension(panWidth, panHeight + bottomPadHeight));
+    jImagePanel.setSize(panWidth, panHeight);
+    pack();
+    setResizable(false);
+  }
+  
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,6 +60,7 @@ public class MainFrame extends javax.swing.JFrame {
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
     jTestButton.setText("Test");
+    jTestButton.setAlignmentY(0.0F);
     jTestButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jTestButtonActionPerformed(evt);
@@ -89,7 +105,7 @@ public class MainFrame extends javax.swing.JFrame {
   }//GEN-LAST:event_jTestButtonActionPerformed
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private ImagePanel jImagePanel;
+  private javax.swing.JPanel jImagePanel;
   private javax.swing.JButton jTestButton;
   // End of variables declaration//GEN-END:variables
 }
