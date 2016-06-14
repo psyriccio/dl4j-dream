@@ -1,0 +1,98 @@
+buildscript {
+  repositories { jcenter() }
+  dependencies {
+    classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.1'
+  }
+}
+
+plugins {
+  id "com.github.johnrengelman.shadow" version "1.2.3"
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'findbugs'
+repositories {
+    maven {
+      url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+    mavenCentral()
+    maven {
+      url 'https://raw.github.com/Ekito/maven-repo/master/releases'
+    }
+    maven {
+      url 'http://maven.openimaj.org'
+    }
+    maven {
+      url 'http://oss.sonatype.org/service/local/staging/deploy/maven2'
+    }
+}
+sourceCompatibility = 1.7
+version = 'latest-SNAPSHOT'
+ext.mainClass = 'dl4jdream.Main'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'dl4j-dream',
+                   'Implementation-Version': version,
+                   'Main-Class': 'dl4jdream.Main'
+    }
+}
+findbugs{
+	sourceSets = [sourceSets.main]
+	ignoreFailures = true
+}
+
+configurations {
+    all*.exclude group: 'org.bytedeco', module: 'javacpp-presets'
+}
+
+dependencies {
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile 'org.nd4j:nd4j-native:0.4-rc3.10'
+    compile 'org.nd4j:nd4j-native:0.4-rc3.10:linux-x86_64'
+    compile group: 'org.deeplearning4j', name: 'deeplearning4j-core', version: '0.4-rc3.10'
+    compile group: 'org.deeplearning4j', name: 'deeplearning4j-ui-components', version: '0.4-rc3.10'
+    compile group: 'org.deeplearning4j', name: 'dl4j-caffe', version: '0.4-rc3.10'
+    compile fileTree(dir: 'lib').matching { include '*.jar'}
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    testCompile 'commons-io:commons-io:2.4'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            srcDir 'src'
+            include '**/*.txt'
+        }
+    }
+    test {
+            java {
+        	srcDir 'test/src'
+        }
+    }
+}
+
+jacoco {
+    toolVersion = "0.7.4.201502262128"
+    reportsDir = file("build/test-results")
+}
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "build/codecovHtml"
+    }
+}
+test {
+  maxParallelForks=4
+  forkEvery=1
+  maxHeapSize = "512m"
+}
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
