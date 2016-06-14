@@ -27,16 +27,28 @@ public class MainFrame extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    jButton1 = new javax.swing.JButton();
+    jTestButton = new javax.swing.JButton();
+    jImagePanel = new ImagePanel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-    jButton1.setText("Test");
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
+    jTestButton.setText("Test");
+    jTestButton.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton1ActionPerformed(evt);
+        jTestButtonActionPerformed(evt);
       }
     });
+
+    javax.swing.GroupLayout jImagePanelLayout = new javax.swing.GroupLayout(jImagePanel);
+    jImagePanel.setLayout(jImagePanelLayout);
+    jImagePanelLayout.setHorizontalGroup(
+      jImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGap(0, 0, Short.MAX_VALUE)
+    );
+    jImagePanelLayout.setVerticalGroup(
+      jImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGap(0, 436, Short.MAX_VALUE)
+    );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -44,25 +56,28 @@ public class MainFrame extends javax.swing.JFrame {
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addGap(0, 597, Short.MAX_VALUE)
-        .addComponent(jButton1))
+        .addComponent(jTestButton))
+      .addComponent(jImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-        .addGap(0, 442, Short.MAX_VALUE)
-        .addComponent(jButton1))
+        .addComponent(jImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(jTestButton))
     );
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    jButton1.setEnabled(false);
+  private void jTestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTestButtonActionPerformed
+    jTestButton.setEnabled(false);
     new MainTest().doTest();
-    jButton1.setEnabled(true);
-  }//GEN-LAST:event_jButton1ActionPerformed
+    jTestButton.setEnabled(true);
+  }//GEN-LAST:event_jTestButtonActionPerformed
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton jButton1;
+  private javax.swing.JPanel jImagePanel;
+  private javax.swing.JButton jTestButton;
   // End of variables declaration//GEN-END:variables
 }
