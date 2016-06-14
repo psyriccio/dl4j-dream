@@ -1,5 +1,5 @@
 # dl4j-dream
 
-##### Implementation of deep-dream like gradient ascent optimization algorithm
+##### Implementation of deepdream-like gradient ascent optimization algorithm for deeplearning4j framework
 
 work in progress
