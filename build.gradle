@@ -2,8 +2,13 @@ buildscript {
   repositories { jcenter() }
   dependencies {
     classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.1'
+    classpath group: 'com.cinnober.gradle', name: 'semver-git', version: '2.2.0'
   }
 }
+
+// optionally: ext.nextVersion = "major", "minor" (default), "patch" or e.g. "3.0.0-rc2"
+// optionally: ext.snapshotSuffix = "SNAPSHOT" (default) or a pattern, e.g. "<count>.g<sha>-SNAPSHOT"
+apply plugin 'com.cinnober.gradle.semver-git'
 
 plugins {
   id "com.github.johnrengelman.shadow" version "1.2.3"
