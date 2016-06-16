@@ -100,7 +100,15 @@ public class MainFrame extends javax.swing.JFrame {
 
   private void jTestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTestButtonActionPerformed
     jTestButton.setEnabled(false);
-    new MainTest().doTest();
+    try {
+      new MainTest().doTest();
+    } catch (IllegalAccessException ex) {
+      Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (NoSuchFieldException ex) {
+      Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (Exception ex) {
+      Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
     jTestButton.setEnabled(true);
   }//GEN-LAST:event_jTestButtonActionPerformed
 
