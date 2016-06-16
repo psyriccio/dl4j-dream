@@ -1,10 +1,8 @@
 #!/bin/sh
-if [ -f ./build/libs/dl4j-dream-latest-SNAPSHOT-all.jar ]
-    
-    then
-        
-        rm ./build/libs/dl4j-dream-latest-SNAPSHOT-all.jar
+JARFILENAME=`ls ./build/libs/dl4j-dream-*.jar 2>/dev/null`
 
+if [ -n $JARFILENAME ]; then
+  rm $JARFILENAME
 fi
 
 ./run.sh
